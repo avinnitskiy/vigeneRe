@@ -18,11 +18,9 @@ Yet using hash functions for physical storage becomes impractical without access
 
 While the original Vigenère table — consisting of 26 uppercase Latin letters — is widely available online, **extended versions** using ASCII or Base encodings are much harder to find. And almost never are such extended tables implemented in the **R programming language**.
 
----
-
 ## 2. Solution
 
-### 2.1 Function Arguments
+### 2.1 Function and Arguments
 
 To address this gap, this project introduces a simple function written in **R** — `generate_vigenere_table()` — which builds Vigenère cipher tables in various encodings and formats. The goal is to allow for **secure offline encryption/decryption** using printed tables.
 
@@ -37,8 +35,8 @@ generate_vigenere_table(
 
 It can take 4 arguments:
 
-- **type** (`character`): choose between `"original"` and `"extended"`.  
-  - `"original"` — generates the traditional 26×26 Vigenère table using only uppercase English letters (A–Z).  
+- **type** (`character`): choose between `"original"` and `"extended"`:
+  - `"original"` — generates the traditional 26×26 Vigenère table using only uppercase English letters (A–Z);
   - `"extended"` — generates a table using a broader character set, defined by the `encoding_standard` argument.
 
 - **encoding_standard** (`character`): required only if `type = "extended"`. Specifies which character set to use. Possible values:  
@@ -53,8 +51,7 @@ It can take 4 arguments:
   - `"csv"` — saves the table as a CSV file;
   - `"pdf"` — saves the table as a printable PDF. Automatically adjusts paper size (A1 to A4) based on table size.
 
-- **filename** (`character`, optional): optional filename to save the output when using `"csv"` or `"pdf"` output types.  
-  If not provided (`NULL`), defaults to `"vigenere_table.csv"` or `"vigenere_table.pdf"` depending on the format.
+- **filename** (`character`, optional): optional filename to save the output when using `"csv"` or `"pdf"` output types. If not provided (`NULL`), defaults to `"vigenere_table.csv"` or `"vigenere_table.pdf"` depending on the format.
 
 ### 2.2 Example
 
@@ -64,6 +61,6 @@ df <- generate_vigenere_table(output = "dataframe", type = "original") # stores 
 generate_vigenere_table(output = "pdf", type = "extended", encoding_standard = "Base58") # saves Base58 version of table into .pdf
 ```
 
-> **Attention!** This function does not perform actual encryption or decryption for you. Its sole purpose is to generate printable Vigenère cipher tables in various encodings, for manual use. If you're looking for ready-to-use symmetric encryption/decryption functions, those are widely available in R and other programming languages. This function deliberately avoids including encryption logic to eliminate the risk of digital compromise (e.g., via clipboard sniffers, keyloggers, or screen recorders). If this risk weren’t present, there would be no strong reason to favor less secure symmetric encryption over hashed password storage in password managers.
+**Attention!** This function does not perform actual encryption or decryption for you. Its sole purpose is to generate printable Vigenère cipher tables in various encodings, for manual use. If you're looking for ready-to-use symmetric encryption/decryption functions, those are widely available in R and other programming languages. This function deliberately avoids including encryption logic to eliminate the risk of digital compromise (e.g., via clipboard sniffers, keyloggers, or screen recorders). If this risk weren’t present, there would be no strong reason to favor less secure symmetric encryption over hashed password storage in password managers.
 
 
