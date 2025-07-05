@@ -61,6 +61,6 @@ df <- generate_vigenere_table(output = "dataframe", type = "original") # stores 
 generate_vigenere_table(output = "pdf", type = "extended", encoding_standard = "Base58") # saves Base58 version of table into .pdf
 ```
 
-**Attention!** This function does not perform actual encryption or decryption for you. Its sole purpose is to generate printable Vigenère cipher tables in various encodings, for manual use. If you're looking for ready-to-use symmetric encryption/decryption functions, those are widely available in R and other programming languages. This function deliberately avoids including encryption logic to eliminate the risk of digital compromise (e.g., via clipboard sniffers, keyloggers, or screen recorders). If this risk weren’t present, there would be no strong reason to favor less secure symmetric encryption over hashed password storage in password managers.
+**Attention!** This function does not perform actual encryption or decryption for you. Its sole purpose is to generate printable Vigenère cipher tables in various encodings, for manual use. If you're looking for ready-to-use symmetric encryption/decryption Vigenère functions, those are widely available in R and other programming languages. This function deliberately avoids including encryption logic to eliminate the risk of digital compromise (e.g., via clipboard sniffers, keyloggers, or screen recorders). If this risk weren’t present, there would be no strong reason to favor less secure symmetric encryption over hashed password storage in password managers.
 
 
