@@ -40,10 +40,10 @@ It can take 4 arguments:
   - `"extended"` — generates a table using a broader character set, defined by the `encoding_standard` argument.
 
 - **encoding_standard** (`character`): required only if `type = "extended"`. Specifies which character set to use. Possible values:  
-  - `"ASCII95"` — All printable ASCII characters from code 32 (space) to 126 (`~`), total of 95;
-  - `"ASCII92"` — Same as ASCII95, but excluding `"`, `'`, and `\`, total of 92;
-  - `"ASCII91"` — Same as ASCII92, but also excludes space character, total of 91;  
-  - `"Base64"` — Standard Base64 character set (`A–Z`, `a–z`, `0–9`, `+`, `/`);
+  - `"ASCII95"` — all printable ASCII characters from code 32 (space) to 126 (`~`), total of 95;
+  - `"ASCII92"` — same as ASCII95, but excluding `"`, `'`, and `\`, total of 92;
+  - `"ASCII91"` — same as ASCII92, but also excludes space character, total of 91;  
+  - `"Base64"` — standard Base64 character set (`A–Z`, `a–z`, `0–9`, `+`, `/`);
   - `"Base58"` — Base58 character set used in crypto, excludes `0`, `O`, `I`, `l`, `+`, `/` for better readability.
 
 - **output** (`character`): defines the output format of the Vigenère table. Possible values:  
