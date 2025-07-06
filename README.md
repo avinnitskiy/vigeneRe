@@ -29,7 +29,8 @@ generate_vigenere_table(
   output = "dataframe",
   filename = NULL,
   type = "original",
-  encoding_standard = NULL
+  encoding_standard = NULL,
+  custom_alphabet = NULL
 )
 ```
 
