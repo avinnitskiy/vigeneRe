@@ -33,7 +33,7 @@ generate_vigenere_table(
 )
 ```
 
-It can take 4 arguments:
+It can take 5 arguments:
 
 - **type** (`character`): choose between `"original"` and `"extended"`:
   - `"original"` — generates the traditional 26×26 Vigenère table using only uppercase English letters (A–Z);
@@ -44,7 +44,8 @@ It can take 4 arguments:
   - `"ASCII92"` — same as ASCII95, but excluding `"`, `'`, and `\`, total of 92;
   - `"ASCII91"` — same as ASCII92, but also excludes space character, total of 91;  
   - `"Base64"` — standard Base64 character set (`A–Z`, `a–z`, `0–9`, `+`, `/`);
-  - `"Base58"` — Base58 character set used in crypto, excludes `0`, `O`, `I`, `l`, `+`, `/` for better readability.
+  - `"Base58"` — Base58 character set used in crypto, excludes `0`, `O`, `I`, `l`, `+`, `/` for better readability;
+  - `"custom"` — your own set of characters.
 
 - **output** (`character`): defines the output format of the Vigenère table. Possible values:  
   - `"dataframe"` — returns the table as an R data.frame in the console. It can be stored as a variable object;
@@ -52,6 +53,8 @@ It can take 4 arguments:
   - `"pdf"` — saves the table as a printable PDF. Automatically adjusts paper size (A1 to A4) based on table size.
 
 - **filename** (`character`, optional): optional filename to save the output when using `"csv"` or `"pdf"` output types. If not provided (`NULL`), defaults to `"vigenere_table.csv"` or `"vigenere_table.pdf"` depending on the format.
+
+- **custom_alphabet** (`character`, optional): required only if `encoding_standard = "custom"`. It takes your own vector-set of characters to generate tables.
 
 ### 2.2 Example
 

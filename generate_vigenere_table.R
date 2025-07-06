@@ -1,6 +1,6 @@
 # An R function that produces original and extended Vigenère сipher tables.
 
-generate_vigenere_table <- function(output = 'dataframe', filename = NULL, type = "original", encoding_standard = NULL) {
+generate_vigenere_table <- function(output = 'dataframe', filename = NULL, type = "original", encoding_standard = NULL, custom_alphabet = NULL) {
   
   # Encoding Options
   if (type == 'original') { # Original 26 Capital English Letters Table
@@ -15,6 +15,8 @@ generate_vigenere_table <- function(output = 'dataframe', filename = NULL, type 
     alphabet <- c(LETTERS, letters, 0:9, "+", "/")
   } else if (type == 'extended' & encoding_standard == 'Base58') { # Base58 (crypto standard): characters "0 O I l + /" are removed
     alphabet <- strsplit("123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz", "")[[1]]
+  } else if (type == 'extended' & encoding_standard == 'custom') { 
+    alphabet <- custom_alphabet
   } else {
     stop('Error: `type` or/and `encoding_standard` argument/s is/are either empty, misspelled or incorrect.')
   }
