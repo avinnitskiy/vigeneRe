@@ -1,24 +1,31 @@
 # An R function that produces original and extended Vigenère сipher tables.
 
-generate_vigenere_table <- function(output = 'dataframe', filename = NULL, type = "original", encoding_standard = NULL, custom_alphabet = NULL) {
+vigenere_table <- function(type = "original", custom_alphabet = NULL, is_random = FALSE, output = 'dataframe', filename = NULL) {
   
   # Encoding Options
   if (type == 'original') { # Original 26 Capital English Letters Table
     alphabet <- intToUtf8(65:90, multiple = TRUE)
-  } else if (type == 'extended' & encoding_standard == 'ASCII95') { # Extended ASCII: all printable characters from 32 (space) to 126 codes
+  } else if (type == 'ASCII95') { # Extended ASCII: all printable characters from 32 (space) to 126 codes
     alphabet <- intToUtf8(32:126, multiple = TRUE)
-  } else if (type == 'extended' & encoding_standard == 'ASCII92') { # Extended ASCII: ", ', \ are removed 
+  } else if (type == 'ASCII92') { # Extended ASCII: ", ', \ are removed 
     alphabet <- intToUtf8(setdiff(32:126, utf8ToInt('"\'\\')), multiple = TRUE)
-  } else if (type == 'extended' & encoding_standard == 'ASCII91') { # Extended ASCII: ", ', \ and empty space are removed 
+  } else if (type == 'ASCII91') { # Extended ASCII: ", ', \ and empty space are removed 
     alphabet <- intToUtf8(setdiff(33:126, utf8ToInt('"\'\\')), multiple = TRUE)
-  } else if (type == 'extended' & encoding_standard == 'Base64') { # Base64 (RFC 4648)
+  } else if (type == 'Base64') { # Base64 (RFC 4648)
     alphabet <- c(LETTERS, letters, 0:9, "+", "/")
-  } else if (type == 'extended' & encoding_standard == 'Base58') { # Base58 (crypto standard): characters "0 O I l + /" are removed
+  } else if (type == 'Base58') { # Base58 (crypto standard): characters "0 O I l + /" are removed
     alphabet <- strsplit("123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz", "")[[1]]
-  } else if (type == 'extended' & encoding_standard == 'custom') { 
+  } else if (type == 'custom') { 
+    if (is.null(custom_alphabet)) stop('Error: `custom_alphabet` must be provided when `type = "custom"`.')
     alphabet <- custom_alphabet
   } else {
-    stop('Error: `type` or/and `encoding_standard` argument/s is/are either empty, misspelled or incorrect.')
+    stop('Error: `type` argument is either misspelled or incorrect.')
+  }
+  
+  if (is_random == TRUE) {
+    alphabet <- sample(alphabet)
+  } else if (is_random != FALSE) {
+    stop('Error: `is_random` argument is either misspelled or incorrect.')
   }
   
   n <- length(alphabet)
@@ -79,7 +86,7 @@ generate_vigenere_table <- function(output = 'dataframe', filename = NULL, type 
     dev.off()
     
   } else {
-    print('Error: check for misspelling in the `output` argument.')
+    stop('Error: `output` argument is either misspelled or incorrect.')
   }
   
 }
